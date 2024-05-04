@@ -13,6 +13,11 @@ app = Flask(__name__)
 CONFIG_FILE = "config.json"
 
 def save_config(pdf_folder, image_path, output_folder):
+    # Replace backward slashes with forward slashes in paths
+    pdf_folder = pdf_folder.replace('\\', '/')
+    image_path = image_path.replace('\\', '/')
+    output_folder = output_folder.replace('\\', '/')
+    
     config_data = {
         "pdf_folder": pdf_folder,
         "image_path": image_path,
@@ -25,7 +30,14 @@ def load_config():
     if os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, "r") as config_file:
             config_data = json.load(config_file)
-            return config_data.get("pdf_folder", ""), config_data.get("image_path", ""), config_data.get("output_folder", "")
+            pdf_folder = config_data.get("pdf_folder", "")
+            image_path = config_data.get("image_path", "")
+            output_folder = config_data.get("output_folder", "")
+            # Replace backward slashes with forward slashes in paths
+            pdf_folder = pdf_folder.replace('\\', '/')
+            image_path = image_path.replace('\\', '/')
+            output_folder = output_folder.replace('\\', '/')
+            return pdf_folder, image_path, output_folder
     return "", "", ""
 
 def add_image_to_pdf(pdf_folder, image_path, output_folder):

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIQYU LOGO PATCHER</title>
+</head>
+<body>
+    <h1>PIQYU LOGO PATCHER</h1>
+    <form method="post">
+        <label for="pdf_folder">PDF Folder:</label><br>
+        <input type="text" id="pdf_folder" name="pdf_folder" value="{{ pdf_folder }}"><br>
+        <label for="image_path">Image Path:</label><br>
+        <input type="text" id="image_path" name="image_path" value="{{ image_path }}"><br>
+        <input type="submit" value="Patch PDFs">
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

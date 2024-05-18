@@ -86,6 +86,7 @@ def index():
     else:
         pdf_folder, image_path, _ = load_config()
         return render_template('index.html', pdf_folder=pdf_folder, image_path=image_path)
-
+        
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8000)
+
